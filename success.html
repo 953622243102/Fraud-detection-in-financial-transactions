@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://www.toptal.com/designers/subtlepatterns/patterns/dark_paper.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        .message {
+            font-size: 1.5em;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .details {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .details h2 {
+            font-size: 2em;
+            color: {% if fraud_detected %} #FF0000 {% else %} #4CAF50 {% endif %};
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .button:hover {
+            background: linear-gradient(135deg, #45a049, #4CAF50);
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message">Fraud Detection Result</div>
+        <div class="details">
+            <h2>Fraud Detected: {{prediction}}</h2>
+        </div>
+        <a href="{% url 'user_data' %}" class="button">Go Back</a>
+    </div>
+</body>
+</html>
